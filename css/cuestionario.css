@@ -1,0 +1,31 @@
+/***************************
+* Autor: Equipo 2
+* Estructuras Discretas
+* 2024-1
+****************************/
+
+#revisar, #reintentar {
+	display: block;
+	height: 54px;
+	cursor: pointer;
+}
+
+#revisar {
+	width: 110px;
+	margin: 20px auto;
+	background: url(../img/cuestionario_revisar.png) no-repeat;
+}
+
+#reintentar {
+	width: 132px;
+	margin: 20px auto;
+	background: url(../img/cuestionario_reintentar.png) no-repeat;
+}
+
+#puntuacionfinal {
+	display: block;
+	width: 132px;
+	height: 120px;
+	font-size: 1.4em;
+	margin: 20px auto 60px auto;
+}

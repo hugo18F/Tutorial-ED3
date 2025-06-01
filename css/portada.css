@@ -1,0 +1,43 @@
+/***************************
+* Autor: Equipo 2
+* Estructuras Discretas
+* 2024-1
+****************************/
+
+section {
+}
+#logos {
+  width: 500px;
+  height: 55px;
+  margin: 0 auto;
+  position: relative;
+  top: 30px;
+}
+#logos img {
+  display: block;
+  width: 120px;
+  height: auto;
+  position: absolute;
+}
+#logos img#logounam {
+  left: 0;
+}
+#logos img#logofi {
+  right: 0;
+}
+#listaPortada {
+  display: block;
+  width: 945px;
+  list-style: none;
+  position: relative;
+  top: 140px;
+}
+#listaPortada li {
+  display: block;
+  width: 100%;
+  height: auto;
+  clear: both;
+  padding: 7.5px 0;
+  text-align: center;
+  font-size: 1.8em;
+}

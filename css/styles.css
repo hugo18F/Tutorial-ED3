@@ -1,0 +1,256 @@
+/* Contenedor principal centrado */
+.kmap-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Contenedor del mapa */
+.kmap-container {
+    max-width: 900px;
+    width: 100%;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto; /* Centrado horizontal */
+    transform: translateY(-5%); /* Ajuste vertical fino */
+}
+
+/* Título centrado */
+.kmap-title {
+    color: #f6aa1c;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4285f4;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Tabla del mapa centrada */
+table.kmap {
+    border-collapse: collapse;
+    margin: 0 auto; /* Centrado horizontal */
+    width: auto; /* Ancho según contenido */
+    background-color: #fff;
+    table-layout: fixed;
+}
+
+/* Controles centrados */
+.kmap-controls {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+/* Resultado centrado */
+.kmap-result {
+    margin: 20px auto 0; /* Centrado horizontal */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border-left: 4px solid #4285f4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    text-align: center;
+    max-width: 80%; /* Ancho controlado */
+}
+
+/* Media queries para mantener el centrado en móviles */
+@media (max-width: 768px) {
+    .kmap-wrapper {
+        padding: 10px;
+        align-items: flex-start; /* Ajuste para móviles */
+    }
+    
+    .kmap-container {
+        transform: none;
+        margin-top: 20px;
+    }
+    
+    table.kmap {
+        width: 100%; /* Ocupa todo el ancho */
+    }
+}
+
+/* Resto de tus estilos permanecen igual */
+.kmap th, .kmap td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    min-width: 50px;
+}
+
+.kmap th {
+    background-color: #f1f1f1;
+    font-weight: 500;
+}
+
+.kmap input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.kmap input[type="checkbox"]:checked {
+    background-color: #4285f4;
+    border-color: #4285f4;
+}
+
+.kmap-btn {
+    display: inline-block;
+    font-weight: bold;
+    color: #ffffffcc;
+    background-color: #4285f4;
+    border: 1px solid #2a75f3;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.kmap-btn:hover {
+    background-color: #3367d6;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.kmap-group-highlight {
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+/* Cambios específicos para el título y expresión */
+h1 {
+    color: #f6aa1c;  /* Cambiado a amarillo/anaranjado */
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+h1 span {
+    color: #f6aa1c;  /* Mismo color para el subtítulo */
+}
+
+.result-container h2 {
+    font-size: 18px;
+    color: #f6aa1c;  /* Cambiado a amarillo/anaranjado */
+    margin-bottom: 10px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Resto del CSS permanece igual */
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.kmap-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.kmap {
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #2a2a3a;
+}
+
+.kmap th, .kmap td {
+    border: 1px solid #3a3a4a;
+    padding: 12px;
+    text-align: center;
+    min-width: 50px;
+}
+
+.kmap th {
+    background-color: #48485f;
+    font-weight: 500;
+}
+
+.kmap input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3a3a4a;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.kmap input[type="checkbox"]:checked {
+    background-color: #7e57c2;
+    border-color: #7e57c2;
+}
+
+.kmap input[type="checkbox"].group-highlight {
+    box-shadow: 0 0 0 2px #7e57c2;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: #7e57c2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #6d4ba8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #424242;
+    color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+    background-color: #333;
+}
+
+.result-container {
+    margin-top: 30px;
+}
+
+.result-box {
+    background-color: #1e1e2e;
+    border: 1px solid #3a3a4a;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* Color del texto del resultado */
+}

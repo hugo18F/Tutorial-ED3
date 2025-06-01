@@ -1,0 +1,68 @@
+body {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#wordSearchContainer {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr); /* Ajusta según el tamaño deseado */
+    gap: 5px;
+    max-width: 500px; /* Ajusta según el tamaño deseado */
+    margin: 0 auto;
+}
+
+#wordSearchContainer div {
+    width: 25px; /* Ajusta según el tamaño deseado */
+    height: 25px; /* Ajusta según el tamaño deseado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000080;
+    cursor: pointer;
+}
+
+#wordSearchContainer div.selected {
+    background-color: #add8e6;
+}
+
+.selected {
+    background-color: #90ee90; /* Un verde claro para las letras seleccionadas */
+}
+
+.found {
+    background-color: #ffcccb; /* Un rojo claro para las palabras encontradas */
+}
+
+.wordsList {
+    margin: 20px auto;
+    max-width: 90vw;
+    padding: 10px;
+    background-color: #000080;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wordsList div {
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.wordsList div.found::after {
+    color: red; /* Color rojo para la palomita */
+}
+
+.wordsList div.found {
+    background-color: #90ee90; /* Verde claro para indicar que la palabra ha sido encontrada */
+    text-decoration: none; /* Remueve el line-through si prefieres no tachar la palabra */
+}
