@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" style="">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="Author" content="Equipo 6"><!--Autor-->
+	<script src="media/js/jq.js" type="text/javascript"></script>
+	<script src="media/js/m.js" type="text/javascript"></script>
+	<script src="media/js/ui.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="media/css/ui.css" type="text/css">
+	<link rel="stylesheet" href="media/css/portada.css" type="text/css">
+	<style>
+		h5 {
+			text-align: justify;
+			text-justify: inter-word;
+			margin: 15px auto;
+			line-height: 1.6;
+		}
+		center {
+			margin: 20px 0;
+		}
+		img {
+			margin: 10px 0;
+		}
+		small {
+			display: block;
+			margin-top: 5px;
+			font-size: 0.8em;
+		}
+	</style>
+</head>
+
+<body style="">
+	<br><br><br>
+	<h1><t>Álgebra de Boole</t></h1> <br>
+	<h5>
+		En 1938, Claude Shannon demostró cómo se podían utilizar las reglas de la lógica para diseñar circuitos. Estas reglas, enunciadas por primera vez en 1854 por George Boole en su libro *Las leyes del pensamiento*, son el fundamento del Álgebra de Boole. El primer paso en la construcción de un circuito consiste en representar su función booleana asociada mediante una expresión construida por medio de las operaciones básicas de un álgebra de Boole. Entre los procedimientos más relevantes para el diseño de circuitos eficientes se pueden destacar los diagramas de Karnaugh y el método Quine-McCluskey.
+	</h5>
+	
+	<h3>3.1.1 George Boole</h3>
+	<h5>
+		George Boole fue un matemático británico nacido en Lincoln, Reino Unido en 1815, creador de un nuevo sistema de cálculo lógico que póstumamente sería llamado Álgebra de Boole. Este sistema, en el que las proposiciones se reducen a símbolos sobre los que puede operar matemáticamente, supuso un avance fundamental en el desarrollo de la lógica. Más de un siglo después, encontraría un formidable e insospechado campo de aplicación en la informática y los microprocesadores, cuyo funcionamiento se basa en la lógica binaria de Boole. Falleció en la actual Irlanda en 1864.
+	</h5>
+	<center>
+		<img src="media/img/george.jpg" border="0" width="650" alt="">
+		<small>(George Boole. Extraído de: López Medina, L. (Noviembre 2003). Método didáctico de simplificación de funciones booleanas.)</small>
+	</center>
+
+	<h3>3.1.2 Funciones Booleanas</h3>
+	<h5>
+		El Álgebra de Boole proporciona las operaciones y las leyes para trabajar en el conjunto (0, 1). Los interruptores electrónicos y ópticos se estudian utilizando este conjunto y las reglas del Álgebra de Boole. Las tres operaciones fundamentales del Álgebra de Boole que se usan habitualmente son el complemento, la suma y el producto booleanos.
+	</h5>
+	<h5>
+		<strong>Complemento:</strong> 0', 1', NOT<br>
+		<strong>Suma booleana:</strong> +, OR<br>
+		<strong>Producto booleano:</strong> *, AND
+	</h5>
+	<h5>
+		A continuación, se presentan sus operaciones y propiedades correspondientes:
+	</h5>
+	<center>
+		<strong>Complemento:</strong><br>
+		0' = 1<br>
+		1' = 0<br><br>
+		<strong>Suma booleana:</strong><br>
+		1 + 1 = 1<br>
+		1 + 0 = 1<br>
+		0 + 1 = 1<br>
+		0 + 0 = 0<br><br>
+		<strong>Producto booleano:</strong><br>
+		1 ∙ 1 = 1<br>
+		1 ∙ 0 = 0<br>
+		0 ∙ 1 = 0<br>
+		0 ∙ 0 = 0<br>
+	</center>
+
+	<h3>3.1.3 Jerarquía de operaciones</h3>
+	<h5>
+		En caso de que las expresiones contengan paréntesis o más de un operador, se recurre a las reglas de precedencia de los operadores:
+	</h5>
+	<center>
+		<ol>
+			<li>Complementos</li>
+			<li>Productos booleanos</li>
+			<li>Sumas booleanas</li>
+		</ol>
+	</center>
+	<h5>
+		Los resultados acerca de un álgebra de Boole se pueden traducir directamente a resultados acerca de fórmulas proposicionales. Sus correspondencias serían de la siguiente forma:
+	</h5>
+	<center>
+		<ol>
+			<li>Complemento: ¬</li>
+			<li>Suma booleana: v</li>
+			<li>Producto booleano: ∧</li>
+		</ol>
+	</center>
+	<h5>
+		Sea B = [0, 1]. Entonces B^n = [ (x_1, x_2,...., x_n) | x_iB, 1 in] es el conjunto de todas las posibles n-tuplas de ceros y unos. La variable x se llama variable booleana si toma valores en el conjunto B, esto es, sus únicos valores posibles son 0 y 1. Una función de B^n en B se llama función booleana de grado n.
+	</h5>
+	<h5>
+		La función F(x, y) = xy que va del conjunto de los pares ordenados de valores booleanos al conjunto {0, 1} es una función de grado 2 con:
+	</h5>
+	<center>
+		<ul>
+			<li>F(0, 0) = 0</li>
+			<li>F(0, 1) = 0</li>
+			<li>F(1, 0) = 1</li>
+			<li>F(1, 1) = 0</li>
+		</ul>
+	</center>
+	<h5>
+		Como se muestra en la tabla de verdad 1.
+	</h5>
+	<center>
+		<img src="media/img/tabla1.jpg" border="0" width="650" alt="">
+		<small>(Tabla de verdad 1. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small>
+	</center>
+	<h5>
+		Las funciones booleanas se pueden representar utilizando expresiones construidas con variables y operadores booleanos. Las expresiones booleanas en las variables x1, x2, …, xn se definen recursivamente como:
+	</h5>
+	<h5>
+		0,1,x1, x2, …, xn son expresiones booleanas; si E1 y E2 son expresiones booleanas, entonces E1, (E1E2) y (E1+E2) son expresiones booleanas.
+	</h5>
+	<h5>
+		Cada expresión booleana representa una función booleana. Los valores de esta función se obtienen sustituyendo las variables de la expresión por 0 y 1.
+	</h5>
+	<h5>
+		Ejemplo: calcular los valores de la función booleana F(x, y, z) = xy + z.
+	</h5>
+	<h5>
+		Solución: se resuelve con tabla de verdad para tres variables booleanas.
+	</h5>
+	<center>
+		<img src="media/img/tabla2.jpg" border="0" width="650" alt="">
+		<small>(Tabla de verdad 2. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small>
+	</center>
+	
+	<h3>3.1.4 Propiedades de un álgebra de Boole</h3>
+	<h5>
+		Las propiedades en un álgebra de Boole son muchas para enlistar. Sin embargo, las más importantes se muestran en la siguiente tabla. Estas propiedades son particularmente útiles en la simplificación del diseño de circuitos. Se puede demostrar cada una con una tabla de valores.
+	</h5>
+	<center>
+		<img src="media/img/tabla3.jpg" border="0" width="650" alt="">
+		<small>(Propiedades del Álgebra de Boole. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small>
+	</center>
+	<br><br><br><br><br><br><br>	
+</body>
+
+</html>

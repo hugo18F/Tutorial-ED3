@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quine-McCluskey Minimizer</title>
+    <style>
+        .kmap-title {
+            color: #f6aa1c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #7e57c2;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+
+        .kmap-subtitle {
+            color: #f6aa1c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .kmap-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .kmap-result {
+            margin: 20px auto 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-left: 4px solid #7e57c2;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fefefe;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #7e57c2;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+        }
+
+        /* Estilos para botones */
+        .kmap-btn {
+            display: inline-block;
+            font-weight: bold;
+            color: white;
+            background-color: #7e57c2;
+            border: 1px solid #2a75f3;
+            border-radius: 10px;
+            text-align: center;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .kmap-btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .kmap-btn-secondary {
+            background-color: #6c757d;
+            border-color: #5a6268;
+        }
+
+        .kmap-btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Estilos para resultados y pasos */
+        .result-title {
+            font-size: 1.3em;
+            color: #f6aa1c;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .result-expression {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .steps-container {
+            margin-top: 30px;
+        }
+
+        .step {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid #7e57c2;
+        }
+
+        .step-title {
+            font-size: 1.1em;
+            color: #7e57c2;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Estilos para tablas */
+        .qmc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+
+        .qmc-table th, .qmc-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .qmc-table th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        /* Estilos para la sección de información */
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .info-title {
+            color: #f6aa1c;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .symbol-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .symbol-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .kmap-wrapper {
+                padding: 10px;
+                align-items: flex-start;
+            }
+            
+            .kmap-container {
+                padding: 20px;
+            }
+            
+            .kmap-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .kmap-btn {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="media/js/app2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables del formulario
+            const varCount = document.getElementById('var-count');
+            const variablesInput = document.getElementById('variables');
+            const mintermsInput = document.getElementById('minterms');
+            const dontcaresInput = document.getElementById('dontcares');
+            const minimizeBtn = document.getElementById('minimize-btn');
+            const randomBtn = document.getElementById('random-btn');
+            const resultContainer = document.getElementById('result-container');
+            const stepsContainer = document.getElementById('steps-container');
+            
+            // Actualizar variables cuando cambia el número
+            varCount.addEventListener('change', function() {
+                const count = parseInt(this.value);
+                const vars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].slice(0, count);
+                variablesInput.value = vars.join(', ');
+            });
+            
+            // Minimizar función
+            minimizeBtn.addEventListener('click', function() {
+                const variables = variablesInput.value.split(',').map(v => v.trim());
+                const minterms = mintermsInput.value.split(',').map(Number).filter(n => !isNaN(n));
+                const dontcares = dontcaresInput.value ? 
+                    dontcaresInput.value.split(',').map(Number).filter(n => !isNaN(n)) : [];
+                
+                const qmc = new QuineMcCluskey();
+                const result = qmc.minimize(minterms, dontcares, variables);
+                
+                // Mostrar resultados
+                resultContainer.innerHTML = `
+                    <div class="result-title">Expresión Minimizada</div>
+                    <div class="result-expression">${result.expression}</div>
+                `;
+                resultContainer.style.display = 'block';
+                
+                // Mostrar pasos del algoritmo
+                stepsContainer.innerHTML = '<div class="info-title">Pasos del Algoritmo</div>';
+                result.steps.forEach(step => {
+                    const stepDiv = document.createElement('div');
+                    stepDiv.className = 'step';
+                    stepDiv.innerHTML = `
+                        <div class="step-title">${step.title}</div>
+                        ${step.content}
+                    `;
+                    stepsContainer.appendChild(stepDiv);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="kmap-wrapper">
+        <div class="kmap-container">
+            <h1 class="kmap-title">Algoritmo Quine-McCluskey</h1>
+            <p class="kmap-subtitle">Minimización de funciones booleanas</p>
+            
+            <div class="form-group">
+                <label for="var-count">Número de variables:</label>
+                <select id="var-count" class="form-control">
+                    <option value="2">2 variables</option>
+                    <option value="3" selected>3 variables</option>
+                    <option value="4">4 variables</option>
+                    <option value="5">5 variables</option>
+                    <option value="6">6 variables</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="variables">Variables (separadas por comas):</label>
+                <input type="text" id="variables" class="form-control" value="A, B, C" placeholder="Ej: A, B, C, D">
+            </div>
+            
+            <div class="form-group">
+                <label for="minterms">Minitérminos (separados por comas):</label>
+                <input type="text" id="minterms" class="form-control" placeholder="Ej: 0, 1, 2, 5, 6, 7">
+            </div>
+            
+            <div class="form-group">
+                <label for="dontcares">Condiciones "Don't Care" (opcional):</label>
+                <input type="text" id="dontcares" class="form-control" placeholder="Ej: 3, 4">
+            </div>
+            
+            <div class="kmap-controls">
+                <button id="minimize-btn" class="kmap-btn">Minimizar</button>
+            </div>
+            
+            <div id="result-container" class="kmap-result" style="display: none;">
+            </div>
+            
+            <div id="steps-container" class="steps-container">
+            </div>
+
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

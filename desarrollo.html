@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" style="">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="Author" content="Equipo 6"><!--Autor-->
+	<script src="media/js/jq.js" type="text/javascript"></script>
+	<script src="media/js/m.js" type="text/javascript"></script>
+	<script src="media/js/ui.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="media/css/ui.css" type="text/css">
+	<link rel="stylesheet" href="media/css/portada.css" type="text/css">
+
+</head>
+
+<body style="">
+	<br><br><br>
+	<h1><t>3. DESARROLLO</t></h1> <br>
+	<h3>3.1 Álgebra de Boole</h3>
+	<h5>
+		En 1938, Claude Shannon demostró cómo se podían utilizar las reglas de la lógica para diseñar circuitos. 
+		Estas reglas, enunciadas por primera vez en 1854 por George Boole en su libro *Las leyes del pensamiento*, 
+		son el fundamento del Álgebra de Boole. El primer paso en la construcción de un circuito consiste en representar
+		su función booleana asociada mediante una expresión construida por medio de las operaciones básicas de un álgebra
+		de Boole. De los procedimientos más relevantes se pueden destacar los diagramas de Karnaugh y el método Quine-McCluskey,
+		para el diseño de circuitos eficientes.
+		<br><br>
+	</h5>
+	<h3>3.1.1 George Boole</h3>
+	<h5>
+		Matemático británico nacido en Lincoln, Reino Unido en 1815, creador de un nuevo sistema de cálculo lógico que póstumamente 
+		sería llamado Álgebra de Boole. Dicho sistema, en el que las proposiciones se reducen a símbolos sobre los que puede operar 
+		matemáticamente, supuso un avance fundamental en el desarrollo de la lógica y, más de un siglo después, hallaría un formidable 
+		e insospechado campo de aplicación en la informática y los microprocesadores, cuyo funcionamiento se basa en la lógica binaria 
+		de Boole. Falleció en la actual Irlanda en 1864.
+		<br><br>
+		<img src="media/img/george.jpg" border="0" width="650" alt="">
+		<center><small>(George Boole. Extraído de: López Medina, L. (Noviembre 2003). Método didáctico de simplificación de funciones booleanas.)</small></center>
+	</h5>
+	<h3>3.1.2 Funciones Booleanas</h3>
+	<h5>
+		El Álgebra de Boole proporciona las operaciones y las leyes para trabajar en el conjunto (0, 1). Los interruptores electrónicos y 
+		ópticos se estudian utilizando este conjunto y las reglas del Álgebra de Boole. Las tres operaciones fundamentales del Álgebra de Boole
+		que se usan habitualmente son el complemento, la suma y el producto booleanos.
+		<br><br>
+		<strong>Complemento:</strong> 0', 1', NOT<br>
+		<strong>Suma booleana:</strong> +, OR<br>
+		<strong>Producto booleano:</strong> *, AND<br>
+		<br>
+		A continuación, se presentan sus operaciones y propiedades correspondientes:
+		<br><br>
+		<center>
+		<strong>Complemento:</strong><br>
+		0' = 1<br>
+		1' = 0<br>
+		<strong>Suma booleana:</strong><br>
+		1 + 1 = 1<br>
+		1 + 0 = 1<br>
+		0 + 1 = 1<br>
+		0 + 0 = 0<br>
+		<strong>Producto booleano:</strong><br>
+		1 ∙ 1 = 1<br>
+		1 ∙ 0 = 0<br>
+		0 ∙ 1 = 0<br>
+		0 ∙ 0 = 0<br>
+		</center>
+	</h5>
+	<h3>3.1.3 Jerarquía de operaciones</h3>
+	<h5>
+		En caso de que las expresiones contengan paréntesis o más de un operador, se recurre a 
+		las reglas de precedencia de los operadores:
+		<center>
+		<ol>
+			<li>Complementos</li>
+			<li>Productos booleanos</li>
+			<li>Sumas booleanas</li>
+		</ol>
+		</center>
+		Los resultados acerca de un álgebra de Boole se pueden traducir directamente a resultados acerca de 
+		fórmulas proposicionales. Sus correspondencias serían de la siguiente forma:
+		<center>
+		<ol>
+			<li>Complemento: ¬</li>
+			<li>Suma booleana: v</li>
+			<li>Producto booleano: ∧</li>
+		</ol>
+		</center>
+		Sea B = [0, 1]. Entonces B^n = [ (x_1, x_2,...., x_n) | x_iB, 1 in] es el conjunto 
+		de todas las posibles n-tuplas de ceros y unos. La variable x se llama variable booleana si toma valores en el conjunto B, 
+		esto es, sus únicos valores posibles son 0 y 1. Una función de B^n en B se llama función booleana de grado n.
+		<br><br>
+		La función F(x, y) = xy que va del conjunto de los pares ordenados de valores booleanos al conjunto {0, 1} 
+		es una función de grado 2 con:
+		<center>
+		<ul>
+			<li>F(0, 0) = 0</li>
+			<li>F(0, 1) = 0</li>
+			<li>F(1, 0) = 1</li>
+			<li>F(1, 1) = 0</li>
+		</ul>
+		</center>
+		Como se muestra en la tabla de verdad 1.
+		<br><br>
+		<img src="media/img/tabla1.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla de verdad 1. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small></center>
+		Las funciones booleanas se pueden representar utilizando expresiones construidas con variables y operadores booleanos. Las expresiones booleanas en las variables x1, x2, …, xn se definen recursivamente como:
+		<br><br>
+		0,1,x1, x2, …, xn son expresiones booleanas; si E1 y E2 son expresiones booleanas, entonces E1, (E1E2) y (E1+E2) son expresiones booleanas.
+		<br><br>
+		Cada expresión booleana representa una función booleana. Los valores de esta función se obtienen sustituyendo las variables de la expresión por 0 y 1.
+		<br><br>
+		Ejemplo: calcular los valores de la función booleana F(x, y, z) = xy + z.
+		<br><br>
+		Solución: se resuelve con tabla de verdad para tres variables booleanas.
+		<br><br>
+		<img src="media/img/tabla2.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla de verdad 2. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small></center>
+		
+	</h5>
+	<h3>3.1.4 Propiedades de un álgebra de Boole</h3>
+	<h5>
+		Las propiedades en un álgebra de Boole son muchas para enlistar. Sin embargo, las más importantes se muestran en la siguiente tabla. 
+		Estas propiedades son particularmente útiles en la simplificación del diseño de circuitos. Se puede demostrar cada una con una tabla de valores.
+		<br><br>
+		<img src="media/img/tabla3.jpg" border="0" width="650" alt="">
+		<center><small>(Propiedades del Álgebra de Boole. Extraído de: Matemática discreta y sus aplicaciones. Rosen K. (2004).)</small></center>
+		
+	</h5>
+	<h3>3.2 Método de Karnaugh</h3>
+	<h3>3.2.1 Circuitos</h3>
+	<h5>
+		El álgebra de Boole se utiliza para modelos de circuitos de dispositivos electrónicos. Cada circuito se puede diseñar utilizando las 
+		propiedades del álgebra de Boole vistas anteriormente. Los elementos básicos de los circuitos se llaman puertas lógicas, y cada una 
+		implementa una operación booleana. Al depender únicamente de los elementos de entrada (y no del estado actual del dispositivo), los 
+		diagramas con estas puertas lógicas son llamados redes lógicas o circuitos combinacionales. Es importante mencionar que estos diagramas 
+		se leen de izquierda a derecha y de arriba hacia abajo. Los flujos de la parte izquierda de cada puerta son variables booleanas entrantes, 
+		las cuales pueden variar en cantidad. El flujo de la parte derecha de cada puerta lógica es la salida, y solo puede haber una única. 
+		Esta se puede integrar a otra puerta posteriormente.
+		<br><br>
+		<img src="media/img/circuitos1.jpg" border="0" width="650" alt="">
+		<center><small>(Puertas lógicas. Extraído de: Matemáticas Discretas, aplicaciones y ejercicios. (Villalpando Becerra, J. F., Garcia Sandoval, A., 2014).)</small></center>
+		
+	</h5>
+	<h3>3.2.2 Maurice Karnaugh</h3>
+	<h5>
+		Maurice Karnaugh, nacido en la ciudad de Nueva York, se licenció en el City College de Nueva York y se doctoró en la Universidad de Yale. 
+		Fue miembro del personal técnico de los Bell Laboratories de 1952 a 1966 y director de investigación y desarrollo en la división de sistemas 
+		federales de AT&T de 1966 a 1970. En 1970 se incorporó a IBM como miembro del personal de investigación. Karnaugh ha hecho contribuciones 
+		fundamentales a la aplicación de técnicas digitales tanto en la computación como en las telecomunicaciones. Sus áreas de interés más recientes 
+		incluyen los sistemas expertos y los métodos heurísticos de búsqueda.
+		<br><br>
+		<img src="media/img/maurice.jpg" border="0" width="650" alt="">
+		<center><small>(Maurice Karnaugh. Extraído de: Dispositivos y circuitos electrónicos. (Donald A. Neamen., 2012).)</small></center>
+		
+	</h5>
+	<h3>3.2.3 Diagramas de Karnaugh</h3>
+	<h5>
+		El diagrama de Karnaugh es un método gráfico cuyo objetivo es hallar términos que se pueden combinar en el caso de funciones booleanas que 
+		dependen de relativamente pocas variables. Este método fue introducido por Maurice Karnaugh en 1953. El diagrama de Karnaugh, o K-diagrama, 
+		no proporciona un método visual para simplificar una forma normal disyuntiva, pero no son adecuados para automatizar este proceso.
+		Es importante resaltar tres conceptos que serán aplicados posteriormente en la minimización con K-diagramas en el álgebra de Boole:
+		<br>
+		<ul>
+			<li><strong>Minitérmino:</strong> es un término producto donde aparecen todas las variables de la función, con o sin su complemento, una única vez.</li>
+			<br>
+			<li><strong>Maxitérmino:</strong> es un término de suma donde aparecen todas las variables de la función, con o sin su complemento, una única vez.</li>
+			<br>
+			<li><strong>Término canónico:</strong> es toda suma o producto que contenga a todas las variables de una función. Puede combinar minitérminos en una forma 
+				normal disyuntiva (sumas) o maxitérminos en una forma normal conmutativa (productos).</li>
+			<br>
+		</ul>
+		Las funciones se acomodan en forma de matriz, representando la función en ella como coordenadas.
+		<br><br>
+		Ejemplo: F(x, y) = xy' + x'y
+		<img src="media/img/Karnaug_1.jpg" border="0" width="650" alt="">
+		<center><small>(Diagrama 1)</small></center>
+		<br><br>  
+		Los minitérminos se traducen en la tabla colocando números uno donde se encuentren. La tabla se lee de la primera columna (la que tiene la variable x) y 
+		después la primera fila (la que tiene la variable y).
+		<br><br>
+		Ejemplo 2: F(x, y) = xy' + x'y + x'y'
+		<br><br>
+		<img src="media/img/Karnaug_2.jpg" border="0" width="650" alt="">
+		<center><small>(Diagrama 2)</small></center>  
+		Siempre que en el K-diagrama haya números uno adyacentes, los minitérminos representados por estas celdas se pueden combinar entre sí dando lugar a un término 
+		que depende solo de una de las variables. En el ejemplo anterior xy' y x'y' están representadas por celdas adyacentes y pueden combinarse para producir y', 
+		ya que $xy' + x'y' = (x + x')y' = y'$. Además, si hay unos en las cuatro celdas, pueden combinarse los cuatro minitérminos para dar lugar a uno solo, que será la 
+		expresión booleana 1 que no depende de ninguna de las variables. Es decir:
+		<br><br>
+		<img src="media/img/K_diagrama_1.jpg" border="0" width="650" alt="">
+		<center><small>(Diagrama 3)</small></center>  
+		<img src="media/img/K_diagrama_2.jpg" border="0" width="650" alt="">
+		<center><small>(Diagrama 4)</small></center>  
+		<img src="media/img/K_diagrama_3.jpg" border="0" width="650" alt="">
+		<center><small>(Diagrama 5)</small></center>  
+		 
+		El objetivo es identificar los bloques de mayor tamaño posible y cubrir todos los unos con el menor número posible de bloques, usando en primer lugar los bloques 
+		más grandes y empleando siempre los bloques del mayor tamaño que sea posible.
+		<br><br>
+		Propiedades y resultados de los K-diagramas 
+		<br><br>
+		<img src="media/img/K_diagrama_4.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_5.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_6.jpg"border="0" width="650" alt="">
+		<center><small>(Bloques de diagrama de Karnaugh para dos variables: “x”, “y”. Extraído de: Dispositivos y circuitos electrónicos. (Donald A. Neamen., 2012).)</small></center>  
+		
+		<br><br>
+		<img src="media/img/K_diagrama_7.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_8.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_9.jpg"border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_10.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_11.jpg" border="0" width="650" alt="">
+		<center><small>(Bloques de diagrama de Karnaugh para tres variables: “x”, “y”, “z”. Extraído de: Dispositivos y circuitos electrónicos. (Donald A. Neamen., 2012).)</small></center>
+		
+		<br><br>
+		<img src="media/img/K_diagrama_12.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_13.jpg" border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_14.jpg"border="0" width="650" alt="">
+		<br>
+		<img src="media/img/K_diagrama_15.jpg"border="0" width="650" alt="">
+		<center><small>(Bloques de diagrama de Karnaugh para cuatro variables: “x”, “y”, “z”, “w”. Extraído de: Dispositivos y circuitos electrónicos. (Donald A. Neamen., 2012).)</small></center>
+		
+	</h5>
+	<h3>3.3 Método de Quine-McCluskey</h3>
+	<h5>
+		El método de Quine-McCluskey cumple con la necesidad de utilizar un procedimiento para simplificar desarrollos en sumas de productos, que pueda automatizarse. 
+		Se puede utilizar para cualquier cantidad de variables. Fue desarrollado en los años cincuenta por W. V. Quine y E. J. McCluskey. Básicamente, el método de 
+		Quine-McCluskey consta de dos partes. La primera parte determina qué términos son candidatos para incluir en un desarrollo mínimo como suma booleana de productos 
+		booleanos y la segunda parte determina cuáles de esos términos se utilizan finalmente.
+		<br><br>
+		Ejemplo: obtener una expresión minimal equivalente a xyz + xy'z + x'y'z + x'y'z'.  
+		Se representan los minitérminos del desarrollo mediante cadenas de bits. Donde aparezca una variable booleana en su estado normal (x), se escribirá 1 bit. 
+		En caso de aparecer con su complemento (x'), se escribirá 0 bits. Se sigue el proceso con el resto de las variables. Eventualmente se cuenta el número de unos 
+		que se encuentran en la columna de Cadena de bits, como se muestra en la siguiente tabla:
+		<br><br>
+		<img src="media/img/Quine_1.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla de valores. Extraído de: Matemática discreta y sus aplicaciones. (Rosen K., 2004).)</small></center>
+		<br><br>
+		El método de Quine-McCluskey utiliza la siguiente secuencia de pasos para simplificar un desarrollo en suma de productos, en el siguiente ejemplo:
+		<br><br>
+		Ejemplo: minimizar con el método de Quine-McCluskey la siguiente fórmula booleana  
+		f(x,y,z,w) = wxyz + wxyz' + wxy'z' + wx'yz + wx'y'z + wx'y'z' + w'xy'z + w'x'yz + w'x'yz'  
+		Notación en suma decimal: F(w,x,y,z)=∑m(2,3,5,8,9,11,12,14,15)
+		<br><br>
+		Paso 1: se traducen las variables booleanas a bits, así como se cuenta el número de unos.
+		<br><br>
+		<img src="media/img/Quine_2.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 1)</small></center>
+		Paso 2: Se organiza la tabla de menor a mayor en cuanto a número de unos, y se forman grupos respecto a la misma cantidad de unos.
+		<br><br>
+		<img src="media/img/Quine_3.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 2)</small></center>
+		Paso 3: identificar cuáles cadenas de bits cambian en solo 1 bit, y reemplazarlo con un “-”. Se compara el grupo n con el grupo n + 1 
+		(el uno con el dos, el dos con el tres…)
+		<br><br>
+		<img src="media/img/Quine_4.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla3)</small></center> 
+		Paso 4: Se repite el mismo procedimiento del Paso 3, pero ahora formando grupos que difieran de dos bits, con base en la Tabla 2. Para esto, se 
+		toman en cuenta los términos cuyas representaciones en bits tengan un guion en la misma posición y difieran de un bit.
+		<br><br>
+		El proceso continúa, sin embargo, ya no existen más posibilidades en este ejemplo.
+		<br><br>
+		Paso 5: se traducen las representaciones en bits a variables booleanas. Estos términos serán llamados implicantes.
+		<br><br>
+		<img src="media/img/Quine_5.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 4)</small></center>
+		Paso 6: Se crea otra tabla donde se acomodan los implicantes y los valores de las variables booleanas en sistema decimal. Se colocará una X de 
+		acuerdo al minitérmino que aparezca en los valores decimales posteriores a la columna de los minitérminos (MT). Finalmente, se verifica que los implicantes 
+		seleccionados cubran todas las columnas.
+		<center>
+		<ul>
+			<li>1 1 1 1 = 15</li>
+			<li>1 1 1 0 = 14</li>
+			<li>1 1 0 0 = 12</li>
+			<li>1 0 1 1 = 11</li>
+			<li>1 0 0 1 = 9</li>
+			<li>1 0 0 0 = 8</li>
+			<li>0 1 0 1 = 5</li>
+			<li>0 0 1 1 = 3</li>
+			<li>0 0 1 0 = 2</li>
+		</ul>
+		</center>
+		<img src="media/img/Quine_6.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 5)</small></center>
+		<img src="media/img/Quine_7.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 6)</small></center>
+		Paso 7: Los implicantes que solo tengan una X se agregan de inmediato a la función minimizada. Sin embargo, para que el método se considere concluido, 
+		se deben buscar más opciones para cubrir todas las columnas de la Tabla 4. Se seleccionan las siguientes, por ejemplo:
+		<br><br>
+		<img src="media/img/Quine_8.jpg" border="0" width="650" alt="">
+		<center><small>(Tabla 7)</small></center>
+		
+		Paso 8: Los implicantes coloreados serán los minitérminos de la función minimizada. A partir de este punto, con ayuda del Álgebra de Boole, 
+		se reduce más la expresión de ser posible.
+		<br><br>
+		Función minimizada:  
+		f(x,y,z,w) = xyz + y'zw + xy'w + xz'w' + x'y'z + w'xy'z
+	</h5>
+	<br><br><br><br><br><br><br>	
+</body>
+
+</html>

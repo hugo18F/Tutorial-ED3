@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Karnaugh - 4 Variables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="media/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Mapa de Karnaugh <span>4 Variables</span></h1>
+            
+            <div class="kmap-container">
+                <table class="kmap">
+                    <tr>
+                        <th>CD\AB</th>
+                        <th>00</th>
+                        <th>01</th>
+                        <th>11</th>
+                        <th>10</th>
+                    </tr>
+                    <tr>
+                        <th>00</th>
+                        <td><input type="checkbox" id="cell0" data-row="0" data-col="0"></td>
+                        <td><input type="checkbox" id="cell1" data-row="0" data-col="1"></td>
+                        <td><input type="checkbox" id="cell3" data-row="0" data-col="2"></td>
+                        <td><input type="checkbox" id="cell2" data-row="0" data-col="3"></td>
+                    </tr>
+                    <tr>
+                        <th>01</th>
+                        <td><input type="checkbox" id="cell4" data-row="1" data-col="0"></td>
+                        <td><input type="checkbox" id="cell5" data-row="1" data-col="1"></td>
+                        <td><input type="checkbox" id="cell7" data-row="1" data-col="2"></td>
+                        <td><input type="checkbox" id="cell6" data-row="1" data-col="3"></td>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <td><input type="checkbox" id="cell12" data-row="2" data-col="0"></td>
+                        <td><input type="checkbox" id="cell13" data-row="2" data-col="1"></td>
+                        <td><input type="checkbox" id="cell15" data-row="2" data-col="2"></td>
+                        <td><input type="checkbox" id="cell14" data-row="2" data-col="3"></td>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <td><input type="checkbox" id="cell8" data-row="3" data-col="0"></td>
+                        <td><input type="checkbox" id="cell9" data-row="3" data-col="1"></td>
+                        <td><input type="checkbox" id="cell11" data-row="3" data-col="2"></td>
+                        <td><input type="checkbox" id="cell10" data-row="3" data-col="3"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="controls">
+                <button id="calculate" class="btn-primary">Calcular Expresión</button>
+                <button id="reset" class="btn-secondary">Reiniciar</button>
+            </div>
+
+            <div class="result-container">
+                <h2>Expresión Simplificada:</h2>
+                <div id="result" class="result-box">F = 0</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="media/js/karnaugh.js"></script>
+</body>
+</html>
+

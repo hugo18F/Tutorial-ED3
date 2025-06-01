@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="Author" content="Equipo	2"/><!--Autor-->
+
+	<meta name="Description" content="DOO"/><!--Descripción del tutorial-->
+	<meta name="Keywords" content="DOO"/><!--Palabras clave-->
+	<meta name="robots" content="noindex, nofollow"/>
+	
+	<script src="media/js/jq.js" type="text/javascript"></script>
+	<script src="media/js/m.js" type="text/javascript"></script>
+	<script src="media/js/ui.js" type="text/javascript"></script>
+	<script src="media/js/cuestionario.js" type="text/javascript"></script>
+	
+	<link rel="stylesheet" href="media/css/ui.css" type="text/css" />
+	
+	<!-- El siguiente CSS puede utilizarse para hacer los ajustes necesarios de los contenidos -->
+	<link rel="stylesheet" href="media/css/cuestionario.css" type="text/css" />
+	
+	<script type="text/javascript">
+		var total=3;
+		var correctas=0;
+		var promedio=0;
+		var entrar=new Array;
+		var examen=[];
+		
+		function examenAleatorio(){
+			total=10;
+			var cont=0;
+			var indice=0;
+			
+			while(cont<total){
+				indice=Math.floor(Math.random()*preguntas.length);
+				if (!preguntas[indice].ocupado){
+					preguntas[indice].ocupado=true;
+					examen[cont]=preguntas[indice];
+					cont++;
+				}		
+			}	
+		}
+		
+		function valua(indice,resp){
+			if (examen[indice].correcta== resp){ 
+				if(!entrar[indice]){
+					entrar[indice]=1;	
+					correctas++;
+				}
+				document.getElementById('resp' + (indice)).innerHTML = ''/*'<span class="bien">Respuestas Correctas&nbsp;'+correctas+'  </span>'*/;	
+			}else{
+				if(!entrar[indice]){
+					entrar[indice]=1;	
+				}
+				document.getElementById('resp' + (indice)).innerHTML = '' /*'<span class="mal">Respuesta Incorrecta&nbsp; </span>'*/;	
+			}
+		}
+
+		function notaFinal() {
+			promedio=correctas/total;	
+			promedio*=10;	
+			document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr>';
+			if(promedio<1)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Contesta algo</center>';
+			if(promedio>=1 && promedio<2)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Repite el tutorial</center>';	
+			if(promedio>=2 && promedio<3)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Consulta al autor</center>';	
+			if(promedio>=3 && promedio<4)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Más atención</center>';	
+			if(promedio>=4 && promedio<5)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Casi</center>';	
+			if(promedio>=5 && promedio<6)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Tú puedes</center>';	
+			if(promedio>=6 && promedio<7)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Buen intento</center>';	
+			if(promedio>=7 && promedio<8)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Bien hecho</center>';	
+			if(promedio>=8 && promedio<9)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Muy bien</center>';	
+			if(promedio>=9 && promedio<10)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Felicidades</center>';	
+			if(promedio==10)	
+				document.getElementById('puntuacionfinal').innerHTML = '<span class="notas"><br/><br/><center>Calificación: &nbsp;'+promedio+'</center></span><hr><center>Experto!</center>';	
+		
+		}
+		
+	</script>
+	
+	<script language="javascript" type="text/javascript">
+		function unoOn(){
+			document.getElementById("Uno").style.visibility="visible";		
+			//$("#Uno").hide().css({visibility: "visible"}).fadeIn("slow");	
+			// $('#Uno').css('visibility','visible').hide().fadeIn('slow');
+		}
+		function unoOut(){
+			document.getElementById("Uno").style.visibility="hidden";
+			//$("#navigationcontainer").fadeTo("slow",0.6);
+			//$('#Uno').css('visibility','hidden').hide().fadeIn('slow');
+		}
+		function dosOn(){
+			document.getElementById("Dos").style.visibility="visible";
+			//$("#Dos").delay(500).fadeTo("slow", 0.6);
+		}
+		function dosOut(){
+			document.getElementById("Dos").style.visibility="hidden";
+		}
+		function tresOn(){
+			document.getElementById("Tres").style.visibility="visible";
+		}
+		function tresOut(){
+			document.getElementById("Tres").style.visibility="hidden";
+		}
+		function cuatroOn(){
+			document.getElementById("Cuatro").style.visibility="visible";
+		}
+		function cuatroOut(){
+			document.getElementById("Cuatro").style.visibility="hidden";
+		}
+	</script>
+
+</head>
+
+<body>
+	
+	<section id="cuestionario">
+		<br><br><br>
+		<h1><t>7. CUESTIONARIO</t></h1><br>
+		<h5 align="justify">
+			A continuación se presenta una serie de 10 preguntas de un total de 50 disponibles. Las preguntas se escogerán aleatoriamente. Una vez contestadas, 
+			podrás obtener una calificación basada en el número de respuestas que hayas contestado correctamente. <br>
+			Puedes generar nuevas preguntas haciendo click en el boton "Reintentar" al final del cuestionario o haciendo click en el apartado "Cuestionario" en 
+			la barra de navegación izquierda. <br><br>
+			Para consultar las respuestas, puedes acceder al documento PDF "Cuestionario Respuestas" en la barra de navegación derecha, que contiene cada una 
+			de las preguntas posibles del cuestionario.<br><br>
+			Responde en función de lo comprendido en el Desarrollo del tema.<br><br>
+		</h5>
+		
+		<script type="text/javascript" >
+			examenAleatorio();
+			for(i=0;i<total;i++){	
+				document.write("<div class='pregunta'>");
+				document.write("<h3>"+ parseInt(i+1) + ".  " +examen[i].pregun+"</h3>");//examen[i].pregunta
+				document.write("<div id='resp"+i+"'>&nbsp;</div><br/>");
+				document.write("<table width='625' height='auto' border='2' align='center' cellpadding='0' cellspacing='0' style='border-bottom: 1px solid rgba(255,255,255,0.3); margin-bottom: 40px;'><tr>");
+				document.write("<td width='312' height='45'><input style='margin-right: 20px' id='uno' type=radio name='cadena"+i+"' value='0' onClick=valua("+i+",this.value) />"+examen[i].respuestas[0] +" </td>");
+				document.write("<td width='312' height='45'><input style='margin-right: 20px' id='dos' type=radio name='cadena"+i+"' value='1' onClick=valua("+i+",this.value) />"+examen[i].respuestas[1] +"</td></tr><tr>");
+				document.write("<td width='312' height='45'><input style='margin-right: 20px' id='tres' type=radio name='cadena"+i+"' value='2' onClick=valua("+i+",this.value) />"+examen[i].respuestas[2] +"</td>");
+				document.write("<td width='312' height='45'><input style='margin-right: 20px' id='cuatro'type=radio name='cadena"+i+"' value='3' onClick=valua("+i+",this.value) />"+examen[i].respuestas[3] +"</td></tr>");
+				document.write("</table></div>");
+			}
+		</script>
+
+		<div id="borrarimprimir">
+			<center><input type="button" id="revisar" value="" onClick="notaFinal()" /></center>
+			
+			<div id="puntuacionfinal"><center>&nbsp;</center></div>
+			
+			<center><input type="button" id="reintentar" value="" onClick="location.reload()"/></center>
+		</div>
+		
+	</section>
+	
+</body>
+
+</html>
